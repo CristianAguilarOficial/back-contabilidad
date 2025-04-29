@@ -1,3 +1,4 @@
+//milddlewares/validator.widdlewares
 export const validateShema = (Schema) => (req, res, next) => {
   try {
     Schema.parse(req.body);

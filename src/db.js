@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 export const connectDB = async () => {
   try {
     await mongoose.connect(
-      process.env.MONGO_URI || 'mongodb://localhost/agrocontability'
+      process.env.MONGO_URI || 'mongodb://localhost/newagrocontabily'
     );
     console.log('>>> DB is connected');
   } catch (error) {
