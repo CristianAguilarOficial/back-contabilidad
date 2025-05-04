@@ -1,25 +1,25 @@
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer';
 
 // Crear un transporter (usando variables de entorno en producción)
 const transporter = nodemailer.createTransport({
-  service: "gmail", // Puedes usar otros servicios como SendGrid, Mailgun, etc.
+  service: 'gmail', // Puedes usar otros servicios como SendGrid, Mailgun, etc.
   auth: {
-    user: process.env.EMAIL_USER || "mikeloxo060@gmail.com",
-    pass: process.env.EMAIL_PASS || "sfnhejdkosdbdkwz",
+    user: process.env.EMAIL_USER || 'mikeloxo060@gmail.com',
+    pass: process.env.EMAIL_PASS || 'sfnhejdkosdbdkwz',
   },
 });
 
 export const sendVerificationEmail = async (to, token) => {
   try {
-    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    const frontendUrl = process.env.URL_FRONT || 'http://localhost:5173';
     const verificationLink = `${frontendUrl}/verify-email/${token}`;
 
     const mailOptions = {
       from: `"Sistema de Tareas" <${
-        process.env.EMAIL_USER || "mikeloxo060@gmail.com"
+        process.env.EMAIL_USER || 'mikeloxo060@gmail.com'
       }>`,
       to,
-      subject: "Verifica tu cuenta",
+      subject: 'Verifica tu cuenta',
       html: `
         <div>
           <h1>Verifica tu cuenta</h1>
@@ -31,24 +31,24 @@ export const sendVerificationEmail = async (to, token) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent:", info.messageId);
+    console.log('Email sent:', info.messageId);
     return true;
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error('Error sending email:', error);
     return false;
   }
 };
 export const sendPasswordResetEmail = async (to, token) => {
   try {
-    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
     const resetLink = `${frontendUrl}/reset-password/${token}`;
 
     const mailOptions = {
       from: `"Sistema de Tareas" <${
-        process.env.EMAIL_USER || "mikeloxo060@gmail.com"
+        process.env.EMAIL_USER || 'mikeloxo060@gmail.com'
       }>`,
       to,
-      subject: "Restablecimiento de contraseña",
+      subject: 'Restablecimiento de contraseña',
       html: `
         <div>
           <h1>Restablecimiento de contraseña</h1>
@@ -61,10 +61,10 @@ export const sendPasswordResetEmail = async (to, token) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log("Email de restablecimiento enviado:", info.messageId);
+    console.log('Email de restablecimiento enviado:', info.messageId);
     return true;
   } catch (error) {
-    console.error("Error al enviar email de restablecimiento:", error);
+    console.error('Error al enviar email de restablecimiento:', error);
     return false;
   }
 };
