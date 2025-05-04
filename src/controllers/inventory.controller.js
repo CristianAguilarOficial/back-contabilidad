@@ -4,9 +4,7 @@ import Inventario from '../models/inventory.model.js';
 
 export const getInventario = async (req, res) => {
   try {
-    const items = await Inventario.find({ user: req.user.id }).sort({
-      fecha: -1,
-    });
+    const items = await Inventario.find({ user: req.user.id }).sort({});
     return res.json(items);
   } catch (error) {
     return res.status(500).json({ message: 'Error al obtener inventario' });
