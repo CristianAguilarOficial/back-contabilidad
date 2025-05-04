@@ -2,14 +2,12 @@
 import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
 
 import authRoutes from './routes/auth.routes.js';
 import inventarioRoutes from './routes/inventory.routes.js';
 
 import cors from 'cors';
 
-dotenv.config();
 const app = express();
 const FRONTEND_URL = process.env.URL_FRONT || 'http://localhost:5173';
 
