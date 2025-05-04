@@ -1,5 +1,3 @@
-// controllers/inventory.controller.js
-
 import Inventario from '../models/inventory.model.js';
 
 export const getInventario = async (req, res) => {
