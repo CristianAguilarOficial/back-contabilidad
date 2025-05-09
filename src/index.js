@@ -3,7 +3,7 @@ import { connectDB } from './db.js';
 
 connectDB();
 
-// Usar el PORT de Railway o 3000 en local
+// Usar el PORT de Railway o 4000 en local
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {

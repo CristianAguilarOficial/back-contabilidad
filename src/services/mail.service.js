@@ -1,23 +1,23 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Crear un transporter (usando variables de entorno en producción)
 const transporter = nodemailer.createTransport({
   service: 'gmail', // Puedes usar otros servicios como SendGrid, Mailgun, etc.
   auth: {
-    user: process.env.EMAIL_USER || 'mikeloxo060@gmail.com',
-    pass: process.env.EMAIL_PASS || 'sfnhejdkosdbdkwz',
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
 export const sendVerificationEmail = async (to, token) => {
   try {
-    const frontendUrl = process.env.URL_FRONT || 'http://localhost:5173';
+    const frontendUrl = process.env.URL_FRONT;
     const verificationLink = `${frontendUrl}/verify-email/${token}`;
 
     const mailOptions = {
-      from: `"Sistema de Tareas" <${
-        process.env.EMAIL_USER || 'mikeloxo060@gmail.com'
-      }>`,
+      from: `"Sistema de Tareas" <${process.env.EMAIL_USER}>`,
       to,
       subject: 'Verifica tu cuenta',
       html: `
@@ -40,13 +40,11 @@ export const sendVerificationEmail = async (to, token) => {
 };
 export const sendPasswordResetEmail = async (to, token) => {
   try {
-    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+    const frontendUrl = process.env.FRONTEND_URL;
     const resetLink = `${frontendUrl}/reset-password/${token}`;
 
     const mailOptions = {
-      from: `"Sistema de Tareas" <${
-        process.env.EMAIL_USER || 'mikeloxo060@gmail.com'
-      }>`,
+      from: `"Sistema de Tareas" <${process.env.EMAIL_USER}>`,
       to,
       subject: 'Restablecimiento de contraseña',
       html: `

@@ -2,13 +2,18 @@
 import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
 
 import authRoutes from './routes/auth.routes.js';
 import inventarioRoutes from './routes/inventory.routes.js';
 import cors from 'cors';
 
 const app = express();
-const FRONTEND_URL = process.env.URL_FRONT || 'http://localhost:5173';
+dotenv.config();
+const FRONTEND_URL = process.env.URL_FRONT;
+console.log('TOKEN_SECRET:', process.env.TOKEN_SECRET);
+
+console.log('Frontend URL:', FRONTEND_URL);
 
 app.use(
   cors({
