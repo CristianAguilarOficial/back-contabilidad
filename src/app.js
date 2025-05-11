@@ -11,10 +11,6 @@ import cors from 'cors';
 const app = express();
 dotenv.config();
 const FRONTEND_URL = process.env.URL_FRONT;
-console.log('TOKEN_SECRET:', process.env.TOKEN_SECRET);
-
-console.log('Frontend URL:', FRONTEND_URL);
-
 app.use(
   cors({
     origin: FRONTEND_URL, //frontend
