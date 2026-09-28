@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
+  "packageManager": "pnpm@12.4.1",
+  "engines": {
+    "pnpm": ">=12"
+  },
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
